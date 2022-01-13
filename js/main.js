@@ -8,14 +8,21 @@ const ctx = canvas.getContext("2d")
 
 //Canvas Eventlisteners------------------------------------------
 canvas.addEventListener("mousemove", function(e){
-    
+    get_mouse_position(canvas, e)
 })
 
 
+function get_mouse_position(Canvas, e) {
+    let rect = Canvas.getBoundingClientRect();
+    let x = e.clientX - rect.left;
+    let y = e.clientY - rect.top;
+    console.log("Coordinate x: " + x, 
+                "Coordinate y: " + y);
+}
 
-function draw_border(border_width) {
+function draw_border(Border_width) {
     ctx.fillRect(0, 0, canvas_w, canvas_max_y)
-    ctx.clearRect(border_width - 1, border_width  - 1, canvas_max_x - (2 * border_width), canvas_max_y - (2 * border_width))
+    ctx.clearRect(Border_width - 1, Border_width  - 1, canvas_max_x - (2 * Border_width), canvas_max_y - (2 * Border_width))
 }
 
 draw_border(30)
